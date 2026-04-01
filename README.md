@@ -17,6 +17,7 @@ I have organized my work into three main categories based on the files in this r
 | **AR-GARCH Volatility Strategy** | A trading strategy that targets volatility using AR-GARCH models to manage risk. | `GARCH`, `Volatility Targeting`, `Risk Mgmt` |
 | **Pairs Trading / Stat Arb** | Implementation of a statistical arbitrage strategy identifying mean-reverting pairs. | `Cointegration`, `Mean Reversion`, `StatArb` |
 | **Trading Strategy Backtest** | A framework for backtesting trading signals against historical data to evaluate performance. | `Backtesting`, `Signal Processing`, `PnL Analysis` |
+| Cross-Sectional ML Factor Model | Uses Random Forest to predict 21-day forward returns via momentum, volatility, and mean-reversion. | Machine Learning, Alpha Generation |
 
 ### 📊 Financial Modeling & Optimization
 | Project | Description | Key Concepts |

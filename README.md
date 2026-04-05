@@ -29,7 +29,7 @@ I have organized my work into three main categories based on the files in this r
 ### 🧮 Stochastic Calculus & Statistics
 | Project | Description | Key Concepts |
 | :--- | :--- | :--- |
-| **Stochastic Processes** | Simulations of Brownian Motion and other stochastic processes used in derivatives pricing. | `Brownian Motion`, `Monte Carlo`, `SDEs` |
+| Stochastic Pricing Engine | Simulates Geometric Brownian Motion and prices options via Monte Carlo, benchmarking against the Black-Scholes model. | Stochastic Calculus, Derivatives Pricing, Ito's Lemma |
 | **Time Series Forecasting** | Comparing AR(1), MA(1), and ARIMA models for forecasting financial data. | `ARIMA`, `Time Series`, `Forecasting` |
 | **Distribution Fitting** | Testing financial returns against Normal and other distributions. | `SciPy`, `Hypothesis Testing`, `Statistics` |
 

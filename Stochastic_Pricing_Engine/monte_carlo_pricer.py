@@ -4,6 +4,13 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm
 import logging
 
+try:
+    import mc_pricer_cpp
+    CPP_AVAILABLE = True
+except ImportError:
+    CPP_AVAILABLE = False
+    logging.warning("C++ extension 'mc_pricer_cpp' not found. Falling back to Python. Run 'python setup.py build_ext --inplace' to compile.")
+
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 class MonteCarloPricingEngine:
@@ -56,6 +63,17 @@ class MonteCarloPricingEngine:
         return call_price
 
     def monte_carlo_call(self) -> float:
+        def monte_carlo_call_cpp(self) -> float:
+        """Prices the European Call option using the optimized C++ engine."""
+        if not CPP_AVAILABLE:
+            logging.error("C++ module not compiled. Using Python fallback.")
+            return self.monte_carlo_call()
+            
+        logging.info(f"Routing {self.simulations} simulations through C++ engine...")
+        mc_price = mc_pricer_cpp.monte_carlo_cpp(
+            self.S0, self.K, self.T, self.r, self.sigma, self.simulations, self.steps
+        )
+        return mc_price
         """Prices the European Call option using Monte Carlo expected payoff."""
         if self.price_paths is None:
             self.simulate_gbm_paths()

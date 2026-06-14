@@ -6,7 +6,6 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# 1️⃣ Pick 5 diversified stocks + market
 tickers = ["AAPL", "JPM", "XOM", "PG", "NVDA", "SPY"]
 
 data = yf.download(tickers, start="2023-01-01", end="2025-01-01")["Close"]
@@ -15,7 +14,6 @@ rets = np.log(data / data.shift(1)).dropna()
 market = rets["SPY"]
 stocks = rets.drop(columns="SPY")
 
-# 2️⃣ Helper: single-factor CAPM
 capm_results = []
 for s in stocks.columns:
     X = sm.add_constant(market)
@@ -31,10 +29,9 @@ capm_df = pd.DataFrame(capm_results,
 print("\nCAPM results:")
 print(capm_df.round(4))
 
-# 3️⃣ Multi-factor model (SPY + other stocks)
 multi_results = []
 for s in stocks.columns:
-    X = rets.drop(columns=s)          # all others as factors
+    X = rets.drop(columns=s)          
     y = rets[s]
     X = sm.add_constant(X)
     model = sm.OLS(y, X).fit()
@@ -44,7 +41,6 @@ multi_df = pd.DataFrame(multi_results, columns=["Ticker", "R²", "Adj R²"])
 print("\nMulti-factor results:")
 print(multi_df.round(4))
 
-# 4️⃣ Compute VIFs for explanatory variables
 X_factors = rets[["SPY", "AAPL", "JPM", "XOM", "PG", "NVDA"]].dropna()
 X_vif = X_factors.drop(columns="SPY")
 vif_df = pd.DataFrame({
@@ -55,7 +51,6 @@ vif_df = pd.DataFrame({
 print("\nVariance Inflation Factors:")
 print(vif_df.round(2))
 
-# 5️⃣ Visualizations
 plt.figure(figsize=(8,5))
 sns.barplot(y="Ticker", x="Beta (SPY)", data=capm_df, color="steelblue")
 plt.title("Single-Factor CAPM Betas")

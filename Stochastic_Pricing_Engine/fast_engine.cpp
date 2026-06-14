@@ -5,7 +5,6 @@
 
 namespace py = pybind11;
 
-// The heavy C++ simulation loop
 double monte_carlo_cpp(double S0, double K, double T, double r, double sigma, int simulations, int steps) {
     std::mt19937 generator(42); 
     std::normal_distribution<double> distribution(0.0, 1.0);

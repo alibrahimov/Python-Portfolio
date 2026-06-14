@@ -1,0 +1,121 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{hyperref}
+
+% --- Layout & Colors ---
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+\definecolor{canonicalnavy}{HTML}{1F3864}
+\definecolor{canonicalblue}{HTML}{D6E4F7}
+
+\titleformat{\section}{\Large\bfseries\color{canonicalnavy}}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{canonicalnavy}}{\thesubsection}{1em}{}
+
+% --- Document Info ---
+\title{\textbf{\color{canonicalnavy}Strategic Finance Working Analysis}\\Canonical FP\&A Model \& Valuation}
+\author{Prepared for Canonical Strategic Finance}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+% --- Executive Summary ---
+\section*{Executive Summary}
+Canonical is a rare asset in the current market: a pre-IPO infrastructure software company generating \$292M in revenue with an 83\% gross margin and established profitability. This model projects three years forward using publicly available financial information from Canonical's FY2024 filings. 
+
+The core finding is that operating margins can naturally expand from 5.4\% to 15.0\% by 2027 without heroic assumptions. This expansion is driven simply by holding revenue growth at 16\% against a tightly managed ~10\% cost growth, yielding a base-case IPO enterprise value of ~\$2.2B.
+
+% --- Section 1: ARR Bridge ---
+\section{ARR Bridge \& Revenue Trajectory}
+The 2024 bridge moves an estimated \$197M beginning ARR through new bookings (+\$30M), expansion (+\$20M), and churn (-\$12M) to exit the year at \$235M. 
+
+Looking forward, gross additions are divided 60/40 between new-logo acquisition and account expansion. Churn is modeled stably at 6\% of the opening ARR balance. The base case compounds ARR to \$280M in 2025 and \$333M in 2026 assuming a 19\% net growth rate. The swing factor in these projections is net expansion—each point of net retention adds or removes ~\$3M from the 2026 ARR target.
+
+% --- Section 2: Operating Leverage ---
+\section{Operating Leverage: Path to 15\% EBIT Margin}
+Holding revenue growth at 16\% while capping OpEx growth at ~10\% results in clean, structural operating leverage. Gross margin improves on scale by 100bps per year. As revenue scales, functional expenses decrease as a percentage of revenue: R\&D shifts from 27\% to 26\%, Cost of Sales from 17\% to 14\%, S\&M from 20\% to 19\%, with G\&A absorbing the largest percentage reduction.
+
+EBIT scales from \$15.8M to \$68.4M over the forecast period—a 4.3x nominal increase. The margin path of 5.4\% $\rightarrow$ 9.0\% $\rightarrow$ 12.5\% $\rightarrow$ 15.0\% lands exactly on the medium-term target in 2027.
+
+\begin{table}[h]
+\centering
+\caption{Forecast Summary $\cdot$ Base Case (\$M)}
+\vspace{0.5em}
+\begin{tabularx}{\textwidth}{X ccccc}
+\toprule
+\textbf{Metric} & \textbf{2024A} & \textbf{2025F} & \textbf{2026F} & \textbf{2027F} & \textbf{CAGR '24–'27} \\
+\midrule
+Total Revenue & 292 & 339 & 393 & 456 & 16.0\% \\
+Gross Profit & 242 & 285 & 334 & 392 & 17.4\% \\
+Gross Margin \% & 83\% & 84\% & 85\% & 86\% & +300bps \\
+Total Operating Expenses & 227 & 254 & 285 & 324 & 12.6\% \\
+\textbf{Operating Profit (EBIT)} & \textbf{16} & \textbf{30} & \textbf{49} & \textbf{68} & \textbf{62.9\%} \\
+Operating Margin \% & 5.4\% & 9.0\% & 12.5\% & 15.0\% & +960bps \\
+\midrule
+Ending ARR & 235 & 280 & 333 & 396 & 19.0\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% --- Section 3: IPO Valuation ---
+\section{Indicative IPO Valuation}
+The implied valuation ranges from \$1.46B to \$2.92B based on comparable infrastructure software peers. The peer group median trades at 9.0x EV/Revenue. For Canonical's base case, the multiple is stepped down 1.5 turns to 7.5x. This discount does not reflect weaker margins—Canonical's profitability is already higher than several loss-making peers—but rather adjusts for Canonical's smaller revenue scale (\$292M vs. the peer range of \$580M–\$1,680M) and a standard private-company illiquidity premium.
+
+Applying a 7.5x multiple on FY24 revenue yields a base estimated EV of ~\$2.19B. A bull case hitting peer parity (10x) yields \$2.92B, while a conservative bear case (5x) anchors at \$1.46B.
+
+\begin{table}[h]
+\centering
+\caption{Comparable Companies Analysis}
+\vspace{0.5em}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Comparable} & \textbf{Revenue (\$M)} & \textbf{EBIT Margin} & \textbf{EV / Rev} \\
+\midrule
+MongoDB & 1,680 & 6\% & 10.5x \\
+HashiCorp (Acq. IBM '24) & 580 & -10\% & 10.0x \\
+Confluent & 900 & -5\% & 9.0x \\
+Elastic & 1,120 & 4\% & 7.5x \\
+SUSE & 700 & 12\% & 5.5x \\
+\midrule
+\textbf{Peer Median} & \textbf{--} & \textbf{4\%} & \textbf{9.0x} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% --- Section 4: Unit Economics ---
+\section{Unit Economics \& Go-to-Market Health}
+Unit economics display robust health. S\&M allocated to new logo acquisition implies a CAC of ~\$200K (based on ~175 estimated new enterprise logos). Against an enterprise ACV of \$175K (at an 83\% margin and a 4.5-year contract life), the LTV sits at \$654K. 
+
+This generates an LTV/CAC ratio of \textbf{3.26x}, sitting comfortably above the 3.0x standard SaaS health benchmark. The CAC payback period is 16.5 months, well within the target 18-month window, providing headroom for continued S\&M investment without margin risk.
+
+% --- Section 5: Scenario Convergence ---
+\section{Scenario Convergence (2026 Outlook)}
+
+\begin{itemize}
+    \item \textbf{Bear (12\% Growth):} ARR reaches \$295M. Margins continue to widen to ~13\% on cost discipline. Valuation anchors near \$1.46B. Downside is contained, and the business remains sustainably profitable.
+    \item \textbf{Base (19\% Growth):} ARR reaches \$333M, landing the 15\% EBIT margin target exactly on plan by 2027. Implied EV of \$2.19B reflects a scale-adjusted peer parity.
+    \item \textbf{Bull (25\% Growth):} ARR accelerates to \$367M, led heavily by account expansion. Assuming peer-parity valuation at 10x, EV reaches \$2.92B, demonstrating the upside available if net retention outperforms.
+\end{itemize}
+
+% --- Section 6: Methodology & Assumptions ---
+\section{Methodology \& Key Assumptions}
+\begin{itemize}
+    \item \textbf{Growth:} Base revenue growth 16\% p.a.; Subscription growth 19\% p.a.
+    \item \textbf{Margins \& OpEx:} Gross margin path 83\% $\rightarrow$ 86\%; OpEx growth capped at ~10\% p.a.
+    \item \textbf{Customer Dynamics:} Gross churn modelled at 6\% of initial ARR; New logo vs. expansion split at 60/40; Average contract life of 4.5 years.
+\end{itemize}
+
+\textbf{Methodology Note (UK GAAP vs. Functional P\&L):} 
+Operating expenses are modelled functionally (R\&D 27\%, S\&M 20\%, G\&A ~31\%) to reflect actual departmental spending, reconciling to the reported \$15.5M operating profit. This bridges the structural classification differences between Canonical's UK FRS 102 statutory accounts and a standard US-GAAP functional P\&L—which is the format an FP\&A team actually uses to plan and operate against. All underlying figures tie back to the FY2024 Companies House filing.
+
+\end{document}

@@ -1,78 +1,54 @@
-# 📈 Quantitative Finance & Python Portfolio
+# Ali Ibrahimov – Quantitative Finance & Data Projects
 
-### Hi there! I'm Ali Ibrahimov 👋
-**Quantitative Researcher | Financial Data Science | Python Developer**
+Finance analyst with an MSc in Finance with Data Science from UCL. I work in FP&A at Canonical and use Python for risk, forecasting and quantitative modelling. This repo collects projects I have built along the way.
 
-Welcome to my portfolio! This repository contains a collection of Python projects focusing on **Quantitative Finance**, **Algorithmic Trading**, and **Financial Modeling**. It demonstrates my ability to implement complex mathematical models and trading strategies using Python.
+Looking for: data analyst, risk analyst, quant analyst and finance analyst roles.
 
----
+## Projects
 
-## 🚀 Featured Projects
+### Risk and portfolio construction
 
-I have organized my work into three main categories based on the files in this repository.
-
-### 🏦 Trading Strategies & Backtesting
-| Project | Description | Key Concepts |
+| Project | What it does | Methods |
 | :--- | :--- | :--- |
-| AR-GARCH Volatility Targeting | Uses an AR(1) model for directional signals and a GARCH(1,1) model for dynamic volatility-scaled position sizing. | Time-Series Forecasting, Risk Management |
-| **Pairs Trading / Stat Arb** | Implementation of a statistical arbitrage strategy identifying mean-reverting pairs. | `Cointegration`, `Mean Reversion`, `StatArb` |
-| **Trading Strategy Backtest** | A framework for backtesting trading signals against historical data to evaluate performance. | `Backtesting`, `Signal Processing`, `PnL Analysis` |
-| Cross-Sectional ML Factor Model | Uses Random Forest to predict 21-day forward returns via momentum, volatility, and mean-reversion. | Machine Learning, Alpha Generation |
+| [Portfolio Optimizer](Portfolio_Optimizer) | Builds a long-only mean-variance efficient frontier for four large-cap stocks and estimates the portfolio's 95% VaR by Monte Carlo simulation. | Mean-variance optimisation (cvxpy), efficient frontier, Monte Carlo VaR |
+| [Factor Model](Factor_Model) | Estimates CAPM alphas and betas against SPY, compares them with a multi-regressor model and checks for multicollinearity. | OLS regression, CAPM, VIF |
+| [AR-GARCH Volatility Targeting](AR_GARCH_Volatility_Targeting) | Uses AR(1) for the direction signal and GARCH(1,1) to scale position size to a volatility target. Backtested on SPY, 2010–2025. | ARIMA, GARCH, volatility targeting |
 
-### 📊 Financial Modeling & Optimization
-| Project | Description | Key Concepts |
+### Forecasting and machine learning
+
+| Project | What it does | Methods |
 | :--- | :--- | :--- |
-| **Quant Portfolio Optimizer** | Uses Modern Portfolio Theory (MPT) to optimize asset allocation for maximum Sharpe ratio. | `Optimization`, `Efficient Frontier`, `Sharpe Ratio` |
-| **Factor Model** | Analysis of asset returns using multi-factor models (e.g., Fama-French). | `Regression`, `Beta Analysis`, `Systematic Risk` |
-| **Fixed Income Yield Curve** | Modeling and visualizing yield curves to analyze interest rate term structures. | `Fixed Income`, `Bond Pricing`, `Yield Analysis` |
+| [Time Series Forecasting](Time_Series_Forecasting) | Compares AR(1), MA(1) and ARIMA(1,0,1) forecasts of SPY returns by RMSE, plus a PCA of large-cap tech returns. | ARIMA, RMSE, PCA |
+| [ML Alpha Strategy](ML_Alpha_Walk_Forward) | Predicts next-day direction with logistic regression and a random forest using walk-forward validation, then compares CAGR, Sharpe and max drawdown. | Classification, walk-forward validation |
+| [Cross-Sectional ML Factor Model](Cross_Sectional_ML_Arbitrage) | Predicts 21-day forward returns from momentum, volatility and mean-reversion features (cross-sectional z-scores) and reports Sharpe, drawdown and information coefficient. | Random forest, feature engineering, IC |
 
-### 🧮 Stochastic Calculus & Statistics
-| Project | Description | Key Concepts |
+### Trading research
+
+| Project | What it does | Methods |
 | :--- | :--- | :--- |
-| Stochastic Pricing Engine | Simulates Geometric Brownian Motion and prices options via Monte Carlo, benchmarking against the Black-Scholes model. | Stochastic Calculus, Derivatives Pricing, Ito's Lemma |
-| **Time Series Forecasting** | Comparing AR(1), MA(1), and ARIMA models for forecasting financial data. | `ARIMA`, `Time Series`, `Forecasting` |
-| **Distribution Fitting** | Testing financial returns against Normal and other distributions. | `SciPy`, `Hypothesis Testing`, `Statistics` |
+| [Pairs Trading](Pairs_Trading_Stat_Arb) | Tests KO/PEP for cointegration and trades the z-score of the hedged spread. | Engle-Granger cointegration, OLS hedge ratio |
+| [Intraday Strategy Backtest](Trading_Strategy_Backtest) | Backtests moving-average crossover and mean-reversion signals on 5-minute SPY bars, including transaction costs and slippage. | Sharpe, max drawdown, hit rate, turnover |
 
----
+### Derivatives and fixed income
 
-## 🛠️ Technical Stack
+| Project | What it does | Methods |
+| :--- | :--- | :--- |
+| [Stochastic Pricing Engine](Stochastic_Pricing_Engine) | Prices European calls by Monte Carlo under GBM and checks the result against Black-Scholes. The simulation loop has a C++ version (pybind11), and a unit test runs on every push through GitHub Actions. | GBM, Monte Carlo, Black-Scholes, C++ |
+| [Stochastic Calculus](Stochastic_Calculus) | Simulates Brownian motion and GBM (exact solution vs Euler-Maruyama) and illustrates Itô's lemma numerically. | Itô calculus, Euler-Maruyama |
+| [Yield Curve Analysis](Yield_Curve_Analysis) | Bond pricing, YTM, duration, convexity and DV01; bootstraps spot rates and fits a Nelson-Siegel curve. | Bootstrapping, Nelson-Siegel |
 
-* **Languages:** Python
-* **Financial Libraries:** `yfinance` (Yahoo Finance), `QuantLib` (if applicable)
-* **Data Science:** `Pandas`, `NumPy`, `SciPy`, `Statsmodels`
-* **Visualization:** `Matplotlib`, `Seaborn`
+Earlier exercises (statistical tests, plotting, Python basics) are in [Learning](Learning).
 
----
+## Running the code
 
-## 💻 How to Run
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/alibrahimov/Python-Portfolio.git](https://github.com/alibrahimov/Python-Portfolio.git)
-    ```
-2.  **Navigate to the directory:**
-    ```bash
+    git clone https://github.com/alibrahimov/Python-Portfolio.git
     cd Python-Portfolio
-    ```
-3.  **Install dependencies:**
-    *(Recommendation: Generate a requirements.txt file so users can easily install libraries)*
-    ```bash
-    pip install pandas numpy matplotlib yfinance scipy statsmodels
-    ```
-4.  **Run a project:**
-    ```bash
-    python "AR-GARCH Volatility-Targeted Trading Strategy/main.py"
-    ```
+    pip install -r requirements.txt
+    python Factor_Model/factor_model.py
 
----
+Market data comes from Yahoo Finance through yfinance, so results change with the download date.
 
-## 📬 Contact
+## Contact
 
-I am open to opportunities in **Quantitative Analysis**, **Risk Management**, and **Data Science**.
-
-* **GitHub:** [github.com/alibrahimov](https://github.com/alibrahimov)
-* **LinkedIn:** https://www.linkedin.com/in/ali-ibrahimov/
-* **Email:** ali.ibrahimov4@gmail.com
-
----
-*Disclaimer: These projects are for educational and portfolio purposes.*
+- LinkedIn: https://www.linkedin.com/in/ali-ibrahimov/
+- Email: ali.ibrahimov4@gmail.com
